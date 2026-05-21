@@ -52,7 +52,31 @@ public int get(char letra){
   char minuscula = aMinuscula(letra);
   return contador[minuscula - 'a'];
 }
-public 
+public void set(char letra, int valor){
+  if (!esLetra(letra)){
+    throw new illegalarmentException("no es letra valida:" + letra)
+  }
+  
+  if (valor < 0) {
+    throw new illegalArgumentExepction("no puede ser negativo: " + valor)
+  }
+
+  char minusculas = aMinuscula(letra)
+  int = indice - 'a';
+  int valorAnterior = contador[indice];
+
+  contador[indice] = valor;
+  totalCounts = totalCount + (valor - valorAnterior);
+
+if (valorAnterior == 00 && valor > 0 ) {
+
+ } else if (valorAnterior > 0 && valor == 0 ){
+
+
+}
+}
+
+
   
   
   
