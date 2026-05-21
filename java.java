@@ -1,6 +1,4 @@
-# proyecto-1
-package cl.utalca;
-import java.util.Scanner;
+//proyecto-1
 
 public class inventarioLetras{
   private int[] contador;
@@ -18,13 +16,13 @@ public class inventarioLetras{
   if (texto != null) {
     texto = texto.toLowerCase();
 
-    for (int i = 0; i < texto.lenght(); i++) {
-      char caracter = texto.CharAt(i);
+    for (int i = 0; i < texto.length(); i++) {
+      char caracter = texto.charAt(i);
 
       if (esLetra(caracter)) { 
         int lugar = caracter - 'a';
         contador[posicion]++;
-        contadorTotal++;
+        totalCount++;
 
         if (contador[posicion] == 1){
           nonZeroCount++;
@@ -108,12 +106,3 @@ System .out. println (inv . encriptarCesar ('a')); // 'd'
 System .out. println (inv . encriptarPalabra (" play ", 3)); // " sodb "
 }
 
-
-
-
-
-
-
-  
-  
-  
