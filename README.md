@@ -1,4 +1,5 @@
 # proyecto-1
+package cl.utalca;
 import java.util.Scanner;
 
 public class inventarioLetras{
@@ -62,19 +63,55 @@ public void set(char letra, int valor){
   }
 
   char minusculas = aMinuscula(letra)
-  int = indice - 'a';
-  int valorAnterior = contador[indice];
+  int = posicion - 'a';
+  int valorAnterior = contador[posicion];
 
-  contador[indice] = valor;
-  totalCounts = totalCount + (valor - valorAnterior);
+  contador[posicion] = valor;
+  totalCount = totalCount + (valor - valorAnterior);
 
 if (valorAnterior == 00 && valor > 0 ) {
+  nonZeroCount++;
 
  } else if (valorAnterior > 0 && valor == 0 ){
+  nonZeroCount-;
+ }
+}
+
+public int size() {
+  return totalCount;
+}
+public boolean isEmpty () {
+  return nonZeroCOunt == 0; 
+}
+public String toString() {
+  String resultado = "[";
+  
+  for (int i = 0; i < 26; i++) {
+    char letra = (char) ('a' + i);
+    for (int j = 0; < contador[i]; ++j) {
+      resultado = resultado + total;
+
+    }
+  }
+  resultado = resultado + "]";
+  reture resultado;
+}
+
+public static void main(String[] args){
+InventarioLetras inv = new InventarioLetras (" Hola Mundo ");
+System .out. println (" size : " + inv . size ()); // 9
+System .out. println (" isEmpty : " + inv . isEmpty ()); // false
+System .out. println ("get ('o '): " + inv . get ('o')); // 2
+System .out. println (inv ); //
+[ adhlnmou ]
+System .out. println (inv . encriptarCesar ('a')); // 'd'
+System .out. println (inv . encriptarPalabra (" play ", 3)); // " sodb "
+}
 
 
-}
-}
+
+
+
 
 
   
