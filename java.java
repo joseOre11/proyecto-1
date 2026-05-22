@@ -6,7 +6,7 @@ public class inventarioLetras{
   private int nonZeroCount;
 
   //constructor
-  public InventarioLetra(String data){
+  public inventarioLetras(String data){
   contador = new int[26];
   totalCount = 0;
   nonZeroCount = 0;
@@ -20,7 +20,7 @@ public class inventarioLetras{
       char caracter = texto.charAt(i);
 
       if (esLetra(caracter)) { 
-        int lugar = caracter - 'a';
+        int posicion = caracter - 'a';
         contador[posicion]++;
         totalCount++;
 
@@ -34,10 +34,10 @@ public class inventarioLetras{
   }  
   
 private boolean esLetra(char caracter){
-  return (caracter >= 'a' && <= 'z'>) || (caracter >=A && caracter <= Z>);
+   return (caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z');
 }
 private char aMinuscula(char caracter){
-  if (caracter >= 'A' && caracter <='Z'){
+  if (caracter >= 'A' && caracter <= 'Z'){
     return (char) (caracter + 32);
   }
   return caracter;
@@ -45,7 +45,7 @@ private char aMinuscula(char caracter){
 
 public int get(char letra){
   if(!esLetra(letra)){
-    throw new illegalArgumentException("No es una letra:" + letra);
+    throw new IllegalArgumentException("No es una letra:" + letra);
 
   }
   char minuscula = aMinuscula(letra);
@@ -53,21 +53,24 @@ public int get(char letra){
 }
 public void set(char letra, int valor){
   if (!esLetra(letra)){
-    throw new illegalargumentException("no es letra valida:" + letra)
-  }
-  
-  if (valor < 0) {
-    throw new illegalArgumentExepction("no puede ser negativo: " + valor)
+     throw new IllegalArgumentException("no es letra valida:" + letra);
   }
 
-  char minusculas = aMinuscula(letra)
-  int = posicion - 'a';
+  
+  if (valor < 0) {
+     throw new IllegalArgumentException("no puede ser negativo: " + valor);
+  }
+
+
+  
+  char minusculas = aMinuscula(letra);
+  int posicion = minusculas - 'a';
   int valorAnterior = contador[posicion];
 
   contador[posicion] = valor;
   totalCount = totalCount + (valor - valorAnterior);
 
-if (valorAnterior == 00 && valor > 0 ) {
+if (valorAnterior == 0 && valor > 0 ) {
   nonZeroCount++;
 
  } else if (valorAnterior > 0 && valor == 0 ){
@@ -96,13 +99,10 @@ public String toString() {
 }
 
 public static void main(String[] args){
-InventarioLetras inv = new InventarioLetras (" Hola Mundo ");
+inventarioLetras inv = new inventarioLetras (" Hola Mundo ");
 System .out. println (" size : " + inv . size ()); // 9
 System .out. println (" isEmpty : " + inv . isEmpty ()); // false
 System .out. println ("get ('o '): " + inv . get ('o')); // 2
 System .out. println (inv ); //
 [ adhlnmou ]
-System .out. println (inv . encriptarCesar ('a')); // 'd'
-System .out. println (inv . encriptarPalabra (" play ", 3)); // " sodb "
 }
-
