@@ -1,12 +1,12 @@
 //proyecto-1
 
-public class inventarioLetras{
+public class InventarioLetras{
   private int[] contador;
   private int totalCount;
   private int nonZeroCount;
 
   //constructor
-  public inventarioLetras(String data){
+  public InventarioLetras(String data){
   contador = new int[26];
   totalCount = 0;
   nonZeroCount = 0;
@@ -31,12 +31,12 @@ public class inventarioLetras{
         }   
       }
     }
-  }  
+   
   
 private boolean esLetra(char caracter){
    return (caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z');
 }
-private char aMinuscula(char caracter){
+private char volverMinuscula(char caracter){
   if (caracter >= 'A' && caracter <= 'Z'){
     return (char) (caracter + 32);
   }
@@ -48,7 +48,7 @@ public int get(char letra){
     throw new IllegalArgumentException("No es una letra:" + letra);
 
   }
-  char minuscula = aMinuscula(letra);
+  char minuscula = volverMinuscula(letra);
   return contador[minuscula - 'a'];
 }
 public void set(char letra, int valor){
@@ -63,7 +63,7 @@ public void set(char letra, int valor){
 
 
   
-  char minusculas = aMinuscula(letra);
+  char minusculas = volverMinuscula(letra);
   int posicion = minusculas - 'a';
   int valorAnterior = contador[posicion];
 
@@ -82,27 +82,52 @@ public int size() {
   return totalCount;
 }
 public boolean isEmpty () {
-  return nonZeroCOunt == 0; 
+  return nonZeroCount == 0; 
 }
 public String toString() {
   String resultado = "[";
   
   for (int i = 0; i < 26; i++) {
     char letra = (char) ('a' + i);
-    for (int j = 0; < contador[i]; ++j) {
-      resultado = resultado + total;
+    for (int j = 0; j < contador[i]; ++j) {
+      resultado = resultado + letra;
 
     }
   }
   resultado = resultado + "]";
-  retur resultado;
+  return resultado;
+}
+private char cifrar(char letra, int desplazamiento) {
+  if (!esLetra(letra)) {
+    return letra;
 }
 
+char base;
+if (letra >= 'A' && letra <= 'Z') {
+  base = 'A';
+} else {
+  base = 'a';
+}
+
+int offset = ((letra - base + desplazamiento) % 26 + 26) % 26;
+return (char) (base + offset);
+}
+public char encritarCesar(char letra) {
+  letra = volverMinuscula(letra);
+  return cifrar(letra,3);
+}
+public char decencriptarCesar(char Letra){
+  letra = volverMinuscula(letra);
+  return cifrar(letra, -3);
+}
+
+
 public static void main(String[] args){
-inventarioLetras inv = new inventarioLetras (" Hola Mundo ");
-System .out. println (" size : " + inv . size ()); // 9
-System .out. println (" isEmpty : " + inv . isEmpty ()); // false
-System .out. println ("get ('o '): " + inv . get ('o')); // 2
-System .out. println (inv ); //
-[ adhlnmou ]
+InventarioLetras inv = new InventarioLetras (" Hola Mundo ");
+System.out.println (" size : " + inv . size ()); // 9
+System.out.println (" isEmpty : " + inv . isEmpty ()); // false
+System.out.println ("get ('o '): " + inv . get ('o')); // 2
+System.out.println (inv ); //[ adhlnmou ]
+
+}
 }
