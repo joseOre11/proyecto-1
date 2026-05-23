@@ -84,6 +84,7 @@ public int size() {
 public boolean isEmpty () {
   return nonZeroCount == 0; 
 }
+@Override
 public String toString() {
   String resultado = "[";
   
@@ -112,22 +113,68 @@ if (letra >= 'A' && letra <= 'Z') {
 int offset = ((letra - base + desplazamiento) % 26 + 26) % 26;
 return (char) (base + offset);
 }
-public char encritarCesar(char letra) {
+public char encriptarCesar(char letra) {
   letra = volverMinuscula(letra);
   return cifrar(letra,3);
 }
-public char decencriptarCesar(char Letra){
+public char desencriptarCesar(char letra){
   letra = volverMinuscula(letra);
   return cifrar(letra, -3);
 }
+public String encriptarPalabra(String palabra, int desplazamiento) {
+  String resultado = "";
+  for (int i = 0; i < palabra.length(); i++) {
+    resultado += encriptarCesar(palabra.charAt(i));
+}
+return resultado;
+}
 
-
+public String desencriptarPalabra(String palabra, int desplazamiento) {
+  String resultado = "";
+  for (int i = 0; i < palabra.length(); i++) {
+    resultado += desencriptarCesar(palabra.charAt(i));
+}
+return resultado;
+} 
+//rere
+public InventarioLetras add(InventarioLetras inventarioSumar) {
+  InventarioLetras resultado = new InventarioLetras("");
+  for (int i = 0; i < 26; i++) {
+    char letra = (char) ('a' + i);
+    int suma = this.contador[i] + inventarioSumar.contador[i];
+    resultado.set(letra, suma);
+  
+}
+return resultado;
+}
+public InventarioLetras subtract(InventarioLetras inventarioRestar) {
+  InventarioLetras resultado = new InventarioLetras("");
+  for (int i = 0; i < 26; i++) {
+    char letra = (char) ('a' + i);
+    int resta = this.contador[i] - inventarioRestar.contador[i];
+    if (resta < 0) {
+        return null;
+    }
+    resultado.set(letra, resta);
+  }
+  return resultado;
+}
+public InventarioLetras amplifies(int n) {
+  InventarioLetras nuevo = new InventarioLetras("");
+  for (int i = 0; i < 26; i++) {
+    char letra = (char) ('a' + i);
+    int multiplicacion = this.contador[i] * n;
+    nuevo.set(letra, multiplicacion);
+  }
+  return nuevo;
+}
 public static void main(String[] args){
 InventarioLetras inv = new InventarioLetras (" Hola Mundo ");
 System.out.println (" size : " + inv . size ()); // 9
 System.out.println (" isEmpty : " + inv . isEmpty ()); // false
 System.out.println ("get ('o '): " + inv . get ('o')); // 2
 System.out.println (inv ); //[ adhlnmou ]
-
+System.out.println (inv . encriptarCesar ('a')); // 'd'
+System.out.println (inv . encriptarPalabra (" play ", 3)); // " sodb "
 }
 }
