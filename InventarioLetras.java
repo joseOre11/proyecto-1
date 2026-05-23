@@ -1,5 +1,5 @@
 //proyecto-1
-
+//jose orellana
 public class InventarioLetras{
   private int[] contador;
   private int totalCount;
