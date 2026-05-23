@@ -32,8 +32,7 @@ public class inventarioLetras{
           }
         }   
       }
-    }
-  }  
+    } 
   
 private boolean esLetra(char caracter){
   return (caracter >= 'a' && <= 'z'>) || (caracter >=A && caracter <= Z>);
@@ -88,14 +87,38 @@ public String toString() {
   
   for (int i = 0; i < 26; i++) {
     char letra = (char) ('a' + i);
-    for (int j = 0; < contador[i]; ++j) {
+    for (int j = 0; j < contador[i]; ++j) {
       resultado = resultado + total;
 
     }
   }
   resultado = resultado + "]";
-  retur resultado;
+  return resultado;
 }
+private char cifrar(char letra,int desplazamiento){
+  if (!esLetra(letra)){
+    return letra;
+  }
+
+  char base ;
+  if (letra>='A' && letra <= 'Z'){
+    base = 'A'
+  } else {
+    base = 'a';
+  }
+ int offset = ((letra - base + desplazamiento) % 26 + 26) % 26;
+return (char) (base + offset);
+}
+public char encritarCesar(char letra) {
+  letra = volverMinuscula(letra);
+  return cifrar(letra,3);
+}
+public char decencriptarCesar(char Letra){
+  letra = volverMinuscula(letra);
+  return cifrar(letra, -3);
+  wqeqeq
+}
+qeq
 
 public static void main(String[] args){
 InventarioLetras inv = new InventarioLetras (" Hola Mundo ");
