@@ -31,8 +31,7 @@ public class InventarioLetras{
         }   
       }
     }
-   
-  
+     
 private boolean esLetra(char caracter){
    return (caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z');
 }
@@ -61,8 +60,6 @@ public void set(char letra, int valor){
      throw new IllegalArgumentException("no puede ser negativo: " + valor);
   }
 
-
-  
   char minusculas = volverMinuscula(letra);
   int posicion = minusculas - 'a';
   int valorAnterior = contador[posicion];
@@ -84,7 +81,7 @@ public int size() {
 public boolean isEmpty () {
   return nonZeroCount == 0; 
 }
-@Override
+
 public String toString() {
   String resultado = "[";
   
@@ -168,13 +165,24 @@ public InventarioLetras amplifies(int n) {
   }
   return nuevo;
 }
+
 public static void main(String[] args){
 InventarioLetras inv = new InventarioLetras (" Hola Mundo ");
 System.out.println (" size : " + inv . size ()); // 9
-System.out.println (" isEmpty : " + inv . isEmpty ()); // false
-System.out.println ("get ('o '): " + inv . get ('o')); // 2
+System.out.println (" isEmpty : " + inv.isEmpty ()); // false
+System.out.println (" get ('o'): " + inv.get ('o')); // 2
 System.out.println (inv ); //[ adhlnmou ]
-System.out.println (inv . encriptarCesar ('a')); // 'd'
-System.out.println (inv . encriptarPalabra (" play ", 3)); // " sodb "
-}
+System.out.println (inv.encriptarCesar ('a')); // 'd'
+System.out.println (inv.encriptarPalabra (" play ", 3)); // " sodb "
+
+//inventario 2
+System.out.println ("--NUEVO INVENTARIO--");
+InventarioLetras inv2 = new InventarioLetras (" Universidad de Chile  ");
+System.out.println("Universidad de Chile");
+System.out.println(inv2);
+System.out.println (" letras : " + inv2.size ()); // 22
+
+
+
+} 
 }
